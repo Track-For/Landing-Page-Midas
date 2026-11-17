@@ -43,7 +43,7 @@ interface ModalityCardData {
 const MODALITY_CARDS: ModalityCardData[] = [
   {
     id: 'spot-futures',
-    badgeLabel: 'ROBÔ 24 H',
+    badgeLabel: 'AUTOMAÇÃO',
     badgeType: 'bot',
     title: 'Spot × Futuros',
     subtitle: 'Cash & Carry Neutro',
@@ -51,7 +51,7 @@ const MODALITY_CARDS: ModalityCardData[] = [
     benefits: [
       'Posição neutra (protegida da alta e da queda)',
       'Funding pode somar ao lucro',
-      'Robô 24h pelo Bot API ou extensão'
+      'Automação pela extensão do navegador'
     ],
     example: {
       action1: {
@@ -75,7 +75,7 @@ const MODALITY_CARDS: ModalityCardData[] = [
   },
   {
     id: 'futures-futures',
-    badgeLabel: 'ROBÔ 24 H',
+    badgeLabel: 'AUTOMAÇÃO',
     badgeType: 'bot',
     title: 'Futuros × Futuros',
     subtitle: 'Cross-Exchange Perpétuo',
@@ -83,7 +83,7 @@ const MODALITY_CARDS: ModalityCardData[] = [
     benefits: [
       'Nenhuma transferência entre corretoras',
       'Funding dos dois lados com horário',
-      'Robô 24h pelo Bot API ou extensão'
+      'Automação pela extensão do navegador'
     ],
     example: {
       action1: {
@@ -201,15 +201,19 @@ export const Modalities: React.FC = () => {
     touchStartX.current = null;
   };
 
-  // Keyboard navigation
+  const stage = useRef<HTMLDivElement>(null);
+  const [spread, setSpread] = useState(0);
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'ArrowLeft') prevSlide();
-      if (e.key === 'ArrowRight') nextSlide();
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    let frame = 0;
+    const update = () => { cancelAnimationFrame(frame); frame = requestAnimationFrame(() => {
+      if (!stage.current) return;
+      const rect = stage.current.getBoundingClientRect();
+      setSpread(window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 1 : Math.max(0, Math.min(1, (window.innerHeight - rect.top) / (Math.min(window.innerHeight, rect.height) * .8))));
+    }); };
+    update(); window.addEventListener('scroll', update, {passive:true}); window.addEventListener('resize', update);
+    return () => {cancelAnimationFrame(frame); window.removeEventListener('scroll', update); window.removeEventListener('resize', update);};
   }, []);
+
 
   return (
     <section id="modalidades" className="py-24 bg-[#08090C] relative overflow-hidden select-none">
@@ -222,7 +226,7 @@ export const Modalities: React.FC = () => {
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-20">
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight mb-4">
-            Uma plataforma.
+            <span>Quatro estratégias.</span><br/>Uma plataforma.
           </h2>
           <p className="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto font-normal">
             Escolha a modalidade que melhor se adapta ao seu perfil e capital disponível.
@@ -232,6 +236,8 @@ export const Modalities: React.FC = () => {
         {/* 3D Cover Flow Carousel Stage */}
         <div 
           className="relative w-full max-w-5xl mx-auto h-[560px] sm:h-[530px] flex items-center justify-center"
+          ref={stage} tabIndex={0} role="region" aria-label="Modalidades de arbitragem"
+          onKeyDown={e => {if(e.key === 'ArrowLeft') {e.preventDefault();prevSlide();} if(e.key === 'ArrowRight') {e.preventDefault();nextSlide();}}}
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
           style={{ perspective: '1200px' }}
@@ -258,7 +264,7 @@ export const Modalities: React.FC = () => {
               // Next Card (Right)
               isRight = true;
               positionStyle = {
-                transform: 'translateX(48%) translateZ(-90px) scale(0.85) rotateY(-8deg)',
+                transform: `translateX(${48 * spread}%) translateZ(-90px) scale(0.85) rotateZ(${8 * spread}deg)`,
                 opacity: 0.35,
                 zIndex: 10,
                 pointerEvents: 'auto',
@@ -268,7 +274,7 @@ export const Modalities: React.FC = () => {
               // Prev Card (Left)
               isLeft = true;
               positionStyle = {
-                transform: 'translateX(-48%) translateZ(-90px) scale(0.85) rotateY(8deg)',
+                transform: `translateX(${-48 * spread}%) translateZ(-90px) scale(0.85) rotateZ(${-8 * spread}deg)`,
                 opacity: 0.35,
                 zIndex: 10,
                 pointerEvents: 'auto',

@@ -1,3 +1,4 @@
+import { FeatureShowcase } from './FeatureShowcase';
 import React, { useState } from 'react';
 import { 
   Activity, 
@@ -13,7 +14,7 @@ import {
   ArrowRight
 } from 'lucide-react';
 
-export const MonitorSection: React.FC = () => {
+export const MonitorSection = ({onStart}: {onStart: () => void}) => {
   const [soundEnabled, setSoundEnabled] = useState(true);
   const [selectedFilter, setSelectedFilter] = useState('all');
 
@@ -26,6 +27,7 @@ export const MonitorSection: React.FC = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
+        <FeatureShowcase onStart={onStart} />
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#C4F82A]/10 border border-[#C4F82A]/25 text-[#C4F82A] text-xs font-mono font-bold uppercase tracking-wider mb-4">

@@ -34,13 +34,13 @@ export const Hero: React.FC<HeroProps> = ({ onOpenCheckout }) => {
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight text-white leading-[1.06] mb-6">
             Arbitragem de Criptomoedas.{' '}
             <span className="text-[#C4F82A] block sm:inline">
-              Com execução automática.
+              Encontre a diferença.
             </span>
           </h1>
 
           {/* Subheadline */}
           <p className="text-lg sm:text-xl text-slate-300 max-w-3xl mx-auto font-normal leading-relaxed mb-8">
-            Você configura. O bot opera. A Midas monitora spreads em <strong className="text-white font-semibold">13 corretoras</strong>, identifica as melhores oportunidades de arbitragem e executa a operação completa — <strong className="text-[#C4F82A] font-semibold">abertura e fechamento</strong> — automaticamente.
+            A Midas monitora spreads em <strong className="text-white font-semibold">13 corretoras</strong>, identifica as melhores oportunidades de arbitragem e oferece ferramentas para automatizar a <strong className="text-[#C4F82A] font-semibold">abertura e fechamento</strong> pela extensão do navegador.
           </p>
 
           {/* Inline Metrics Bar */}
@@ -70,9 +70,9 @@ export const Hero: React.FC<HeroProps> = ({ onOpenCheckout }) => {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-3">
             <button
               onClick={() => onOpenCheckout('pro')}
-              className="w-full sm:w-auto px-8 py-4 rounded-xl font-black text-base text-[#08090C] bg-[#C4F82A] hover:bg-[#D4FF4D] shadow-xl shadow-[#C4F82A]/25 hover:scale-[1.02] active:scale-[0.99] transition-all duration-200 flex items-center justify-center gap-2.5 group cursor-pointer"
+              className="contact-pill"
             >
-              <span>Começar agora</span>
+              <span className="contact-pill-icon"><ArrowRight size={22}/></span><span>Começar agora</span>
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </button>
 
@@ -87,49 +87,9 @@ export const Hero: React.FC<HeroProps> = ({ onOpenCheckout }) => {
 
           {/* Microcopy */}
           <p className="text-xs text-slate-400 font-mono">
-            Planos a partir de <strong className="text-[#C4F82A] font-black">R$ 40/mês</strong> no plano anual · Pix ou cartão
+            Plano Pro por <strong className="text-[#C4F82A] font-black">R$ 78/mês</strong> no plano anual · Pix ou cartão
           </p>
 
-        </div>
-
-        {/* Player / Mockup Central Demonstrativo */}
-        <div className="max-w-5xl mx-auto mb-16">
-          <div className="rounded-2xl p-[1px] bg-gradient-to-b from-[#C4F82A]/40 via-white/10 to-[#C4F82A]/20 shadow-2xl shadow-black/80">
-            <div className="bg-[#11131A] rounded-2xl overflow-hidden border border-white/5">
-              
-              {/* Player Top Navigation Bar */}
-              <div className="px-4 py-3 bg-[#0C0E14] border-b border-white/10 flex items-center justify-between gap-3 text-xs">
-                <div className="flex items-center gap-3">
-                  <div className="flex items-center gap-1.5">
-                    <span className="w-3 h-3 rounded-full bg-red-500/80 inline-block" />
-                    <span className="w-3 h-3 rounded-full bg-amber-500/80 inline-block" />
-                    <span className="w-3 h-3 rounded-full bg-[#C4F82A]/80 inline-block" />
-                  </div>
-                  <span className="text-slate-400 font-mono text-[11px] hidden sm:inline">
-                    midas.com.br — Como a Midas funciona
-                  </span>
-                </div>
-
-                <div className="flex items-center gap-2">
-                  <span className="flex items-center gap-1.5 bg-[#C4F82A]/10 border border-[#C4F82A]/30 px-2.5 py-0.5 rounded text-[11px] font-bold text-[#C4F82A]">
-                    <Radio className="w-3 h-3 text-[#C4F82A] animate-pulse" />
-                    <span>DEMO INTERATIVA AO VIVO</span>
-                  </span>
-                  <button
-                    onClick={() => setIsPlayingVideo(!isPlayingVideo)}
-                    className="p-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white transition-colors"
-                    title={isPlayingVideo ? 'Pausar demonstração' : 'Executar demonstração'}
-                  >
-                    {isPlayingVideo ? <Pause className="w-3.5 h-3.5 text-[#C4F82A]" /> : <Play className="w-3.5 h-3.5 text-[#C4F82A] fill-[#C4F82A]" />}
-                  </button>
-                </div>
-              </div>
-
-              {/* Dynamic Live Monitor embedded into the mockup */}
-              <LiveMonitorDemo />
-
-            </div>
-          </div>
         </div>
 
       </div>

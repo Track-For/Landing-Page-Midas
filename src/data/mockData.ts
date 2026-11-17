@@ -306,7 +306,7 @@ export const COURSES: CourseModule[] = [
     duration: '4h 30m',
     lessonsCount: 15,
     description: 'O método institucional mais consistente: posições delta-neutras com robôs operando 24 horas por dia na nuvem ou por extensão.',
-    topics: ['Configuração do robô 24h na nuvem', 'Estratégias de convergência de spread e descolamento', 'Como lucrar com picos anormais de volatilidade', 'Automação via extensão de navegador para moedas recém-lançadas']
+    topics: ['Configuração dos parâmetros de automação', 'Estratégias de convergência de spread e descolamento', 'Como lucrar com picos anormais de volatilidade', 'Automação via extensão de navegador para moedas recém-lançadas']
   }
 ];
 
@@ -409,7 +409,7 @@ export const FAQ_ITEMS: FaqItem[] = [
   },
   {
     question: 'Como funciona a execução automática dos robôs?',
-    answer: 'Você define seus parâmetros na plataforma (spread mínimo de abertura, spread de fechamento desejado e capital por ciclo). O robô monitora o mercado 24h por dia na nuvem. Assim que o mercado atinge o spread configurado, ele executa as duas pontas da operação de forma fracionada (respeitando a liquidez real do livro). Quando o spread converge, o robô encerra as posições sozinho e te notifica pelo Telegram.',
+    answer: 'Você define seus parâmetros na plataforma (spread mínimo de abertura, spread de fechamento desejado e capital por ciclo). A extensão acompanha o mercado enquanto o computador e o navegador estiverem ligados. Assim que o mercado atinge o spread configurado, ele executa as duas pontas da operação de forma fracionada (respeitando a liquidez real do livro). Quando o spread converge, o robô encerra as posições sozinho e te notifica pelo Telegram.',
     category: 'robos'
   },
   {
@@ -419,7 +419,7 @@ export const FAQ_ITEMS: FaqItem[] = [
   },
   {
     question: 'Preciso deixar o computador ou navegador ligado para o robô operar?',
-    answer: 'Nos planos com o Robô de Nuvem (Plano Black), NÃO! O robô roda em servidores dedicados de alta disponibilidade 24 horas por dia, 7 dias por semana. Você pode configurar pelo celular ou computador e desligar tudo. Já no robô por Extensão do Chrome (Plano Pro), ele opera enquanto o navegador estiver aberto na aba da corretora, ideal para moedas recém-lançadas sem API pública.',
+    answer: 'Sim. No Pro, a extensão opera enquanto o computador estiver ligado e o navegador estiver aberto na aba da corretora. O plano também inclui o piloto automático USDT/BRL. Robô API na nuvem não está incluído nesta oferta.',
     category: 'robos'
   },
   {
@@ -449,7 +449,7 @@ export const FAQ_ITEMS: FaqItem[] = [
   }
 ];
 
-export const PLANS = [
+const ALL_PLANS = [
   {
     id: 'start',
     name: 'Plano Start',
@@ -513,3 +513,5 @@ export const PLANS = [
     ctaBadge: 'Automação Total'
   }
 ];
+
+export const PLANS = ALL_PLANS.filter(plan => plan.id === "pro").map(plan => ({...plan, features: [...ALL_PLANS[0].features.filter(f => !f.includes("Módulos iniciais")), ...plan.features.filter(f => !f.includes("Tudo do"))]}));

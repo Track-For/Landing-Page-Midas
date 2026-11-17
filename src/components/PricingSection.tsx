@@ -3,7 +3,7 @@ import { Check, Zap, ArrowRight, Star } from 'lucide-react';
 import { PLANS } from '../data/mockData';
 
 interface PricingSectionProps {
-  onOpenCheckout: (planId: string) => void;
+  onOpenCheckout: (planId: string, cycle?: 'monthly' | 'annual') => void;
 }
 
 export const PricingSection: React.FC<PricingSectionProps> = ({ onOpenCheckout }) => {
@@ -24,11 +24,11 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onOpenCheckout }
             <span>Assinaturas Transparentes</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight mb-4">
-            Escolha o nível da sua operação.{' '}
-            <span className="text-[#C4F82A]">Cancele quando quiser.</span>
+            Simples. Um plano.{' '}
+            <span className="text-[#C4F82A]">Acesso ao Pro.</span>
           </h2>
           <p className="text-slate-300 text-base sm:text-lg mb-8">
-            Preços acessíveis construídos para se pagarem rapidamente com os primeiros spreads capturados pelos robôs.
+            Monitores, extensão do navegador, piloto automático USDT/BRL e mentoria em uma assinatura.
           </p>
 
           {/* Billing Cycle Toggle */}
@@ -53,14 +53,14 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onOpenCheckout }
             >
               <span>Plano Anual</span>
               <span className="bg-[#08090C] text-[#C4F82A] text-[10px] px-2 py-0.5 rounded-md font-mono font-black">
-                -20% OFF
+                ANUAL
               </span>
             </button>
           </div>
         </div>
 
         {/* 3 Pricing Columns */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-1 gap-8 items-stretch max-w-3xl mx-auto">
           {PLANS.map((plan) => {
             const isHighlight = plan.highlighted;
             const price = billingCycle === 'annual' 
@@ -120,7 +120,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onOpenCheckout }
                       </div>
                       {billingCycle === 'annual' && (
                         <div className="text-[11px] text-[#C4F82A] font-mono font-semibold mt-1">
-                          A partir de R$ 40/mês · Economize até R$ {(plan.priceMonthly * 12 * 0.2).toFixed(0)}/ano
+                          Total anual: R$ {plan.priceAnnualEquivalent * 12}
                         </div>
                       )}
                     </div>
@@ -144,7 +144,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onOpenCheckout }
                   {/* CTA Button */}
                   <div>
                     <button
-                      onClick={() => onOpenCheckout(plan.id)}
+                      onClick={() => onOpenCheckout(plan.id, billingCycle)}
                       className={`w-full py-4 rounded-xl font-black text-sm transition-all duration-200 flex items-center justify-center gap-2 shadow-lg cursor-pointer ${
                         isHighlight
                           ? 'bg-[#C4F82A] hover:bg-[#D4FF4D] text-[#08090C] shadow-[#C4F82A]/25'

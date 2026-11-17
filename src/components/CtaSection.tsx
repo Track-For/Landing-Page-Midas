@@ -1,3 +1,4 @@
+import { siteConfig } from '../siteConfig';
 import React from 'react';
 import { ArrowRight, MessageCircle, ShieldCheck, Zap } from 'lucide-react';
 
@@ -29,7 +30,7 @@ export const CtaSection: React.FC<CtaSectionProps> = ({ onOpenCheckout }) => {
             </h2>
 
             <p className="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto">
-              Junte-se a centenas de operadores que utilizam robôs 24h na nuvem e o monitor mais completo de spreads em 13 corretoras.
+              Junte-se a centenas de operadores que utilizam automação no navegador e o monitor mais completo de spreads em 13 corretoras.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
@@ -41,17 +42,10 @@ export const CtaSection: React.FC<CtaSectionProps> = ({ onOpenCheckout }) => {
                 <ArrowRight className="w-5 h-5" />
               </button>
 
-              <a
-                href="https://wa.me/5511999999999?text=Ol%C3%A1%2C%20gostaria%20de%20tirar%20uma%20d%C3%BAvida%20sobre%20a%20Midas"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full sm:w-auto px-6 py-4 rounded-xl font-bold text-sm text-slate-200 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 hover:border-[#C4F82A]/40 transition-all flex items-center justify-center gap-2"
-              >
-                <MessageCircle className="w-4 h-4 text-[#C4F82A]" />
-                <span>Tirar dúvidas no WhatsApp</span>
-              </a>
+
             </div>
 
+            {siteConfig.whatsappNumber && <a className="whatsapp-link" href={`https://wa.me/${siteConfig.whatsappNumber}`} target="_blank" rel="noopener noreferrer"><MessageCircle size={20}/> Fale com a Midas no WhatsApp</a>}
             <div className="flex flex-wrap items-center justify-center gap-6 pt-4 text-xs text-slate-400 font-mono">
               <div className="flex items-center gap-1.5">
                 <ShieldCheck className="w-4 h-4 text-[#C4F82A]" />

@@ -1,3 +1,4 @@
+import { siteConfig } from '../siteConfig';
 import React, { useState } from 'react';
 import { HelpCircle, ChevronDown, ChevronUp, MessageCircle } from 'lucide-react';
 import { FAQ_ITEMS } from '../data/mockData';
@@ -123,7 +124,7 @@ export const FaqSection: React.FC = () => {
         </div>
 
         {/* Direct WhatsApp Help Card */}
-        <div className="mt-12 p-6 rounded-2xl bg-[#11131A] border border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+        {siteConfig.whatsappNumber && <div className="mt-12 p-6 rounded-2xl bg-[#11131A] border border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-[#C4F82A]/15 border border-[#C4F82A]/30 flex items-center justify-center text-[#C4F82A]">
               <MessageCircle className="w-5 h-5" />
@@ -134,14 +135,14 @@ export const FaqSection: React.FC = () => {
             </div>
           </div>
           <a
-            href="https://wa.me/5511999999999?text=Ol%C3%A1%2C%20gostaria%20de%20tirar%20uma%20d%C3%BAvida%20sobre%20a%20Midas"
+            href={`https://wa.me/${siteConfig.whatsappNumber}`}
             target="_blank"
             rel="noopener noreferrer"
             className="px-5 py-2.5 rounded-xl text-xs font-black text-[#08090C] bg-[#C4F82A] hover:bg-[#D4FF4D] transition-all flex items-center gap-2 shrink-0 font-mono shadow-md shadow-[#C4F82A]/20"
           >
             <span>Falar no WhatsApp</span>
           </a>
-        </div>
+        </div>}
 
       </div>
     </section>

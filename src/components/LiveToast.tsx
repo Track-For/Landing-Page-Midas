@@ -14,7 +14,7 @@ const TOASTS: ToastData[] = [
     title: '⚡ Ciclo Fechado com Lucro',
     profit: '+3,2296 USDT',
     pair: 'BP/USDT',
-    strategy: 'Spot × Futuros (Nuvem 24h)',
+    strategy: 'Spot × Futuros (Demonstração)',
     timeAgo: 'agora'
   },
   {

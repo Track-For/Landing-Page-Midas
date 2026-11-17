@@ -1,3 +1,4 @@
+import { Experience, Explainer } from './components/Experience';
 import React, { useState } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
@@ -19,11 +20,13 @@ import { LiveToast } from './components/LiveToast';
 
 export function App() {
   const [checkoutModalOpen, setCheckoutModalOpen] = useState(false);
+  const [billingCycle, setBillingCycle] = useState<'monthly' | 'annual'>('annual');
   const [selectedPlanId, setSelectedPlanId] = useState<string>('pro');
   const [loginModalOpen, setLoginModalOpen] = useState(false);
 
-  const handleOpenCheckout = (planId: string = 'pro') => {
+  const handleOpenCheckout = (planId: string = 'pro', cycle: 'monthly' | 'annual' = 'annual') => {
     setSelectedPlanId(planId);
+    setBillingCycle(cycle);
     setCheckoutModalOpen(true);
   };
 
@@ -42,7 +45,7 @@ export function App() {
 
       <main className="flex-1">
         {/* Section B: Hero Section with Live Monitor Demo */}
-        <Hero onOpenCheckout={handleOpenCheckout} />
+        <Experience /><Hero onOpenCheckout={handleOpenCheckout} /><Explainer onStart={() => handleOpenCheckout('pro')} />
 
         {/* Section C: 4 Modalities Grid with Real Examples */}
         <Modalities />
@@ -51,7 +54,7 @@ export function App() {
         <Automations onOpenCheckout={handleOpenCheckout} />
 
         {/* Section E: Live Monitor & Real-Time Alerts */}
-        <MonitorSection />
+        <MonitorSection onStart={() => handleOpenCheckout('pro')} />
 
         {/* Section F: Real Results & Operator Showcase */}
         <ResultsSection />
@@ -83,6 +86,8 @@ export function App() {
 
       {/* Interactive Modals */}
       <CheckoutModal
+        key={`${checkoutModalOpen}-${billingCycle}`}
+        initialCycle={billingCycle}
         isOpen={checkoutModalOpen}
         onClose={() => setCheckoutModalOpen(false)}
         initialPlanId={selectedPlanId}
@@ -94,7 +99,7 @@ export function App() {
       />
 
       {/* Floating Live Toast with Real Arbitrage Alerts */}
-      <LiveToast />
+      <div className="live-toast-desktop"><LiveToast /></div>
 
     </div>
   );

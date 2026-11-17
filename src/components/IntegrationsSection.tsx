@@ -4,7 +4,7 @@ import { EXCHANGES } from '../data/mockData';
 
 export const IntegrationsSection: React.FC = () => {
   return (
-    <section className="py-24 bg-[#0A0C12] relative border-t border-b border-white/5 bg-dot-grid">
+    <section id="integracoes" className="py-24 bg-[#0A0C12] relative border-t border-b border-white/5 bg-dot-grid">
       
       {/* Background Lighting */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-[#C4F82A]/5 blur-[150px] pointer-events-none rounded-full" />
@@ -18,8 +18,7 @@ export const IntegrationsSection: React.FC = () => {
             <span>Ecossistema Multicorretoras</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight mb-4">
-            13 Corretoras Integradas.{' '}
-            <span className="text-[#C4F82A]">Liquidez global na ponta dos seus dedos.</span>
+            Conectado às principais <span className="draw-circle">corretoras<svg viewBox="0 0 300 100" preserveAspectRatio="none" aria-hidden="true"><ellipse cx="150" cy="50" rx="146" ry="46" pathLength="1" /></svg></span>.
           </h2>
           <p className="text-slate-300 text-base sm:text-lg">
             Conecte suas contas em segundos via chaves de API sem custódia e acesse livros de ordens sincronizados de exchanges centralizadas e DEX on-chain.

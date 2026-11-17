@@ -15,14 +15,17 @@ interface CheckoutModalProps {
   isOpen: boolean;
   onClose: () => void;
   initialPlanId?: string;
+  initialCycle?: 'monthly' | 'annual';
 }
 
 export const CheckoutModal: React.FC<CheckoutModalProps> = ({
   isOpen,
   onClose,
   initialPlanId = 'pro',
+  initialCycle = 'annual',
 }) => {
   const [selectedPlanId, setSelectedPlanId] = useState<string>(initialPlanId);
+  const [annual, setAnnual] = useState(initialCycle === 'annual');
   const [paymentMethod, setPaymentMethod] = useState<'pix' | 'card'>('pix');
   const [copiedPix, setCopiedPix] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
@@ -36,8 +39,9 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
 
   if (!isOpen) return null;
 
-  const currentPlan = PLANS.find((p) => p.id === selectedPlanId) || PLANS[1];
-  const simulatedPixCode = `00020126580014br.gov.bcb.pix0136midas-${currentPlan.id}-assinatura5204000053039865405${currentPlan.priceMonthly}.005802BR5915MIDAS TEC SAAS6009SAO PAULO62070503***6304E8A9`;
+  const currentPlan = PLANS.find((p) => p.id === selectedPlanId) || PLANS[0];
+  const orderPrice = annual ? currentPlan.priceAnnualEquivalent * 12 : currentPlan.priceMonthly;
+  const simulatedPixCode = `00020126580014br.gov.bcb.pix0136midas-${currentPlan.id}-assinatura5204000053039865405${orderPrice}.005802BR5915MIDAS TEC SAAS6009SAO PAULO62070503***6304E8A9`;
 
   const handleCopyPix = () => {
     navigator.clipboard.writeText(simulatedPixCode);
@@ -68,6 +72,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
           <X className="w-5 h-5" />
         </button>
 
+        <div className="flex gap-3 mb-6"><button onClick={() => setAnnual(false)} aria-pressed={!annual} className="p-3 border rounded-xl">Mensal · R$ 97</button><button onClick={() => setAnnual(true)} aria-pressed={annual} className="p-3 border rounded-xl">Anual · R$ 936</button></div>
         {isSuccess ? (
           /* Success Screen */
           <div className="text-center py-8 space-y-5 animate-in zoom-in-95 duration-200">
@@ -91,11 +96,11 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
               </div>
               <div className="flex justify-between">
                 <span className="text-slate-400 font-sans">Valor:</span>
-                <span className="text-white font-bold">R$ {currentPlan.priceMonthly},00/mês</span>
+                <span className="text-white font-bold">R$ {orderPrice},00 {annual ? "/ano" : "/mês"}</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-slate-400 font-sans">Status da chave:</span>
-                <span className="text-[#C4F82A] font-bold">Robô 24h Habilitado</span>
+                <span className="text-[#C4F82A] font-bold">Plano Pro selecionado</span>
               </div>
             </div>
 
@@ -125,7 +130,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
             </div>
 
             {/* Plan Selector Radio Cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+            <div className="grid grid-cols-1 sm:grid-cols-1 gap-2.5">
               {PLANS.map((plan) => (
                 <button
                   key={plan.id}
@@ -146,8 +151,8 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
                     )}
                   </div>
                   <div className="mt-1 text-lg font-black text-[#C4F82A] font-mono tabular-nums">
-                    R$ {plan.priceMonthly}
-                    <span className="text-[11px] font-normal text-slate-400">/mês</span>
+                    R$ {orderPrice}
+                    <span className="text-[11px] font-normal text-slate-400">{annual ? "/ano" : "/mês"}</span>
                   </div>
                 </button>
               ))}
@@ -216,7 +221,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
                       Abra o aplicativo do seu banco, escolha Pix &gt; Pagar com QR Code ou Copia e Cola. O robô libera o acesso automaticamente em até 10 segundos.
                     </p>
                     <div className="text-[#C4F82A] font-mono font-black text-sm">
-                      Valor: R$ {currentPlan.priceMonthly},00
+                      Valor: R$ {orderPrice},00
                     </div>
                   </div>
                 </div>
@@ -298,7 +303,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
               <div className="flex justify-between items-center text-sm font-mono">
                 <span className="text-slate-400 font-sans">Total a pagar:</span>
                 <span className="text-2xl font-black text-[#C4F82A] tabular-nums">
-                  R$ {currentPlan.priceMonthly},00
+                  R$ {orderPrice},00
                 </span>
               </div>
 

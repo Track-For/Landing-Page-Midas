@@ -28,7 +28,7 @@ export const Footer: React.FC = () => {
             </div>
 
             <p className="text-slate-400 text-xs leading-relaxed max-w-sm">
-              Plataforma líder em monitoramento e execução automatizada de arbitragem de criptomoedas em 13 corretoras. Tecnologia 100% não custodiante com robôs 24h na nuvem, extensão web e mentoria inclusa.
+              Plataforma líder em monitoramento e execução automatizada de arbitragem de criptomoedas em 13 corretoras. Tecnologia 100% não custodiante com robôs Automação no navegador, extensão web e mentoria inclusa.
             </p>
 
             <div className="flex items-center gap-3 pt-2">
@@ -50,7 +50,7 @@ export const Footer: React.FC = () => {
                 <a href="#modalidades" className="hover:text-white transition-colors">4 Modalidades</a>
               </li>
               <li>
-                <a href="#robos" className="hover:text-white transition-colors">Robôs 24h na Nuvem</a>
+                <a href="#robos" className="hover:text-white transition-colors">Automações do Pro</a>
               </li>
               <li>
                 <a href="#monitor" className="hover:text-white transition-colors">Monitor em Tempo Real</a>

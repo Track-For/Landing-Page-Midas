@@ -26,7 +26,7 @@ export const MentorshipSection: React.FC = () => {
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#C4F82A]/10 border border-[#C4F82A]/25 text-[#C4F82A] text-xs font-mono font-bold uppercase tracking-wider mb-4">
             <GraduationCap className="w-3.5 h-3.5" />
-            <span>Mentoria Inclusa em Todos os Planos</span>
+            <span>Mentoria inclusa no Pro</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight mb-4">
             Comece do Zero Absoluto.{' '}
@@ -53,6 +53,12 @@ export const MentorshipSection: React.FC = () => {
           </div>
         </div>
 
+        <div className="course-covers" aria-label="Cursos da mentoria">
+          {COURSES.map((course, index) => <button key={course.number} className={`course-cover ${expandedCourse === course.number ? 'active' : ''}`} aria-pressed={expandedCourse === course.number} onMouseEnter={() => setExpandedCourse(course.number)} onFocus={() => setExpandedCourse(course.number)} onClick={() => setExpandedCourse(course.number)}>
+            <img src="/images/midas-courses.png" alt="" loading="lazy" style={{objectPosition: `${index * 25}% center`}}/>
+            <span className="course-number">{course.number} / MIDAS ACADEMY</span><strong>{course.title}</strong>
+          </button>)}
+        </div>
         {/* Courses Accordion */}
         <div className="space-y-3.5 max-w-4xl mx-auto">
           {COURSES.map((course) => {

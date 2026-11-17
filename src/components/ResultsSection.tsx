@@ -73,7 +73,7 @@ export const ResultsSection: React.FC = () => {
                   </div>
                   <div className="text-[10px] text-[#C4F82A] flex items-center gap-1 mt-1 font-sans">
                     <span className="w-1.5 h-1.5 rounded-full bg-[#C4F82A] animate-pulse" />
-                    24h na nuvem
+                    Automação no navegador
                   </div>
                 </div>
 
@@ -211,7 +211,7 @@ export const ResultsSection: React.FC = () => {
               return (
                 <button
                   key={op.id}
-                  onClick={() => setSelectedOpId(op.id)}
+                  onMouseEnter={() => setSelectedOpId(op.id)} onFocus={() => setSelectedOpId(op.id)} onClick={() => setSelectedOpId(op.id)}
                   className={`w-full p-4 rounded-xl text-left transition-all border flex items-center justify-between gap-3 cursor-pointer ${
                     isSelected
                       ? 'bg-[#161922] border-[#C4F82A] shadow-lg shadow-[#C4F82A]/15 scale-[1.01]'

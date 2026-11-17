@@ -50,9 +50,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCheckout, onOpenLogin }) =
                 <span className="text-2xl font-black tracking-tight text-white group-hover:text-[#C4F82A] transition-colors">
                   MIDAS
                 </span>
-                <span className="px-1.5 py-0.5 text-[9px] font-extrabold uppercase tracking-wider rounded bg-[#C4F82A]/15 text-[#C4F82A] border border-[#C4F82A]/30">
+                {/* <span className="px-1.5 py-0.5 text-[9px] font-extrabold uppercase tracking-wider rounded bg-[#C4F82A]/15 text-[#C4F82A] border border-[#C4F82A]/30">
                   SaaS
-                </span>
+                </span> */}
               </div>
               <span className="text-[10px] uppercase tracking-widest text-slate-400 -mt-1 font-semibold">
                 Arbitragem Cripto
@@ -142,7 +142,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCheckout, onOpenLogin }) =
               }}
               className="w-full py-2.5 text-center text-sm font-black text-[#08090C] bg-[#C4F82A] rounded-lg shadow-lg shadow-[#C4F82A]/20"
             >
-              Assinar agora — a partir de R$ 40/mês
+              Assinar agora — a partir de R$ 78/mês
             </button>
           </div>
         </div>
