@@ -93,6 +93,7 @@
 @media(max-width:767px) {
   /* Offscreen blur layers can blank the first paint in iOS WebKit. */
   main .pointer-events-none[class*="blur-"] { display: none !important; }
+  main *, main *::before, main *::after { filter: none !important; }
   [class*="backdrop-blur"], .glass-surface {
     -webkit-backdrop-filter: none !important;
     backdrop-filter: none !important;
