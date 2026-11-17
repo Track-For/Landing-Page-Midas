@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+
+  body {
+    background-color: #08090C;
+    color: #FFFFFF;
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #08090C;
+}
+::-webkit-scrollbar-thumb {
+  background: #1C202C;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2D3748;
+}
+
+/* Glassmorphism helpers */
+.glass-surface {
+  background: rgba(17, 19, 26, 0.75);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-card-hover {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glass-card-hover:hover {
+  background: rgba(22, 25, 34, 0.9);
+  border-color: rgba(196, 248, 42, 0.35);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px -10px rgba(196, 248, 42, 0.15);
+}
+
+/* Neon Lime Glow */
+.glow-lime {
+  box-shadow: 0 0 25px rgba(196, 248, 42, 0.3);
+}
+
+.glow-lime-sm {
+  box-shadow: 0 0 15px rgba(196, 248, 42, 0.2);
+}
+
+/* Text Gradients */
+.text-gradient-lime {
+  background: linear-gradient(135deg, #E2FF75 0%, #C4F82A 50%, #A3E635 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-white {
+  background: linear-gradient(180deg, #FFFFFF 0%, #D1D5DB 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Dot Grid Background Texture */
+.bg-dot-grid {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1.2px, transparent 1.2px);
+  background-size: 28px 28px;
+}
+
+.bg-dot-grid-dense {
+  background-image: radial-gradient(rgba(196, 248, 42, 0.12) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
