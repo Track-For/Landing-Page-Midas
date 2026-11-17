@@ -15,7 +15,7 @@ export const MentorshipSection: React.FC = () => {
   const [expandedCourse, setExpandedCourse] = useState<string>('01');
 
   return (
-    <section className="py-24 bg-[#08090C] relative">
+    <section id="treinamento" className="py-24 bg-[#08090C] relative">
       
       {/* Background radial glow */}
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[650px] h-[350px] bg-[#C4F82A]/5 blur-[150px] pointer-events-none rounded-full" />
@@ -26,14 +26,14 @@ export const MentorshipSection: React.FC = () => {
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#C4F82A]/10 border border-[#C4F82A]/25 text-[#C4F82A] text-xs font-mono font-bold uppercase tracking-wider mb-4">
             <GraduationCap className="w-3.5 h-3.5" />
-            <span>Mentoria inclusa no Pro</span>
+            <span>O QUE VOCÊ VAI APRENDER</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight mb-4">
             Comece do Zero Absoluto.{' '}
-            <span className="text-[#C4F82A]">5 Cursos Completos e 68 Aulas em Vídeo.</span>
+            <span className="text-[#C4F82A]">5 Módulos. 68 Aulas em Vídeo.</span>
           </h2>
           <p className="text-slate-300 text-base sm:text-lg">
-            A ferramenta é de precisão, mas o conhecimento é o que protege seu patrimônio. Nossa mentoria ensina você a pensar e operar como um formador de mercado institucional.
+            Construa sua base antes de operar. Aprenda os fundamentos, conheça as modalidades de arbitragem e acompanhe exemplos para entender como avaliar uma oportunidade.
           </p>
         </div>
 
@@ -45,15 +45,15 @@ export const MentorshipSection: React.FC = () => {
           </div>
           <div className="flex items-center gap-2 bg-[#11131A] px-4 py-2 rounded-xl border border-white/5 font-mono">
             <Users className="w-4 h-4 text-[#C4F82A]" />
-            <span>Comunidade Fechada de Operadores</span>
+            <span>Fundamentos e análise de operações</span>
           </div>
           <div className="flex items-center gap-2 bg-[#11131A] px-4 py-2 rounded-xl border border-white/5 font-mono">
             <Award className="w-4 h-4 text-[#C4F82A]" />
-            <span>Checklists e Planilhas de Gestão</span>
+            <span>Custos e gestão de risco</span>
           </div>
         </div>
 
-        <div className="course-covers" aria-label="Cursos da mentoria">
+        <div className="course-covers" aria-label="Módulos do treinamento">
           {COURSES.map((course, index) => <button key={course.number} className={`course-cover ${expandedCourse === course.number ? 'active' : ''}`} aria-pressed={expandedCourse === course.number} onMouseEnter={() => setExpandedCourse(course.number)} onFocus={() => setExpandedCourse(course.number)} onClick={() => setExpandedCourse(course.number)}>
             <img src="/images/midas-courses.png" alt="" loading="lazy" style={{objectPosition: `${index * 25}% center`}}/>
             <span className="course-number">{course.number} / MIDAS ACADEMY</span><strong>{course.title}</strong>
@@ -135,7 +135,7 @@ export const MentorshipSection: React.FC = () => {
         </div>
 
         <div className="mt-12 text-center text-xs text-slate-400 font-mono">
-          Acesso liberado imediatamente após a confirmação da assinatura em qualquer plano.
+          Treinamento Midas por R$ 197, em pagamento único. A assinatura da plataforma é uma contratação separada.
         </div>
 
       </div>

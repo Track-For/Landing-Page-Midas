@@ -55,6 +55,6 @@ export function Explainer({onStart}: {onStart: () => void}) {
      <button type="button" className="lab-action" onClick={() => setComplete(!complete)}>{complete ? <RotateCcw size={18}/> : <ArrowRight size={18}/>} {complete ? 'Reiniciar exemplo' : 'Simular essa diferença'}</button>
      <p className="lab-note">*Preços fictícios. Taxa ilustrativa de 0,1% por ordem. Não inclui transferência, funding, slippage ou mudanças de preço. Este exemplo não executa operações nem representa rentabilidade garantida.</p>
    </div>
-   <button className="contact-pill" onClick={onStart}><span className="contact-pill-icon"><ArrowRight size={22}/></span><span>COMEÇAR AGORA</span></button>
+   <button className="contact-pill" onClick={onStart}><span className="contact-pill-icon"><ArrowRight size={22}/></span><span>QUERO APRENDER POR R$ 197</span></button>
  </section>;
 }

@@ -19,18 +19,18 @@ export const CtaSection: React.FC<CtaSectionProps> = ({ onOpenCheckout }) => {
             
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#C4F82A]/10 border border-[#C4F82A]/25 text-[#C4F82A] text-xs font-mono font-bold uppercase tracking-wider">
               <Zap className="w-3.5 h-3.5 fill-current" />
-              <span>Pronto para automatizar suas operações?</span>
+              <span>PRONTO PARA COMEÇAR A APRENDER?</span>
             </div>
 
             <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight max-w-3xl mx-auto leading-tight">
-              Não adivinhe o mercado.{' '}
+              Entenda a diferença.{' '}
               <span className="text-[#C4F82A] block sm:inline">
-                Lucre com a diferença de preço.
+                Aprenda a analisar.
               </span>
             </h2>
 
             <p className="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto">
-              Junte-se a centenas de operadores que utilizam automação no navegador e o monitor mais completo de spreads em 13 corretoras.
+              Dê o primeiro passo na arbitragem de criptomoedas com 5 módulos, 68 aulas em vídeo e exemplos práticos usando a Midas. Treinamento por R$ 197 em pagamento único.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
@@ -38,7 +38,7 @@ export const CtaSection: React.FC<CtaSectionProps> = ({ onOpenCheckout }) => {
                 onClick={() => onOpenCheckout('pro')}
                 className="w-full sm:w-auto px-8 py-4 rounded-xl font-black text-base text-[#08090C] bg-[#C4F82A] hover:bg-[#D4FF4D] shadow-xl shadow-[#C4F82A]/25 hover:scale-[1.02] active:scale-[0.99] transition-all flex items-center justify-center gap-2 cursor-pointer font-mono"
               >
-                <span>Escolher meu plano</span>
+                <span>Quero o treinamento por R$ 197</span>
                 <ArrowRight className="w-5 h-5" />
               </button>
 
@@ -49,12 +49,12 @@ export const CtaSection: React.FC<CtaSectionProps> = ({ onOpenCheckout }) => {
             <div className="flex flex-wrap items-center justify-center gap-6 pt-4 text-xs text-slate-400 font-mono">
               <div className="flex items-center gap-1.5">
                 <ShieldCheck className="w-4 h-4 text-[#C4F82A]" />
-                <span>Zero risco de custódia</span>
+                <span>Curso online</span>
               </div>
               <span>·</span>
-              <div>Mentoria com 68 aulas inclusa</div>
+              <div>68 aulas em vídeo</div>
               <span>·</span>
-              <div>Cancele quando quiser</div>
+              <div>Pagamento único</div>
             </div>
 
           </div>
