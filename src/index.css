@@ -81,6 +81,21 @@
 }
 /* Midas presentation system */
 :root { --accent: #c4f82a; }
+.landing-hero { isolation: isolate; }
+/* A painted gradient avoids large filtered layers in iOS webviews. */
+.hero-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 50% 25%, rgba(196,248,42,.08), transparent 65%),
+    radial-gradient(ellipse at 25% 40%, rgba(16,185,129,.05), transparent 60%);
+}
+@media(max-width:767px) {
+  /* Offscreen blur layers can blank the first paint in iOS WebKit. */
+  main .pointer-events-none[class*="blur-"] { display: none !important; }
+  .reveal-title { opacity: 1 !important; transform: none !important; }
+  .type-reveal { clip-path: none !important; }
+}
 body { background: #050605; }
 main section { background-color: #050605 !important; padding-top: 110px; padding-bottom: 110px; }
 .bg-dot-grid { background-image: linear-gradient(#ffffff04 1px,transparent 1px),linear-gradient(90deg,#ffffff04 1px,transparent 1px); background-size: 64px 64px; }

@@ -2,11 +2,17 @@ import { useEffect, useState } from 'react';
 import { ArrowRight, Check, RotateCcw, ArrowLeftRight } from 'lucide-react';
 export function Experience() {
  useEffect(() => {
+ const elements = document.querySelectorAll('main section h2, main section h3');
+ // Mobile webviews must never depend on observer callbacks to show content.
+ if (window.matchMedia('(max-width: 767px), (prefers-reduced-motion: reduce)').matches || typeof IntersectionObserver !== 'function') {
+   elements.forEach(el => el.classList.add('revealed'));
+   document.querySelector('#integracoes')?.classList.add('circle-visible');
+   return;
+ }
  const circle = document.querySelector('#integracoes');
  const circleObserver = new IntersectionObserver(entries => entries.forEach(entry => {if(entry.isIntersecting){entry.target.classList.add('circle-visible');circleObserver.unobserve(entry.target);}}), {threshold: window.innerWidth < 768 ? .15 : .85});
  if(circle) circleObserver.observe(circle);
- const elements = document.querySelectorAll('main section h2, main section h3');
- const observer = new IntersectionObserver(entries => entries.forEach(entry => { if(entry.isIntersecting) { entry.target.classList.add('revealed'); observer.unobserve(entry.target); } }), {threshold: .65});
+ const observer = new IntersectionObserver(entries => entries.forEach(entry => { if(entry.isIntersecting) { entry.target.classList.add('revealed'); observer.unobserve(entry.target); } }), {threshold: .15});
  elements.forEach(el => {el.classList.add('reveal-title'); observer.observe(el)});
  return () => { observer.disconnect(); circleObserver.disconnect(); elements.forEach(el => el.classList.remove('reveal-title')); };
  }, []);

@@ -10,11 +10,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenCheckout }) => {
   const [isPlayingVideo, setIsPlayingVideo] = useState(false);
 
   return (
-    <section className="relative pt-32 pb-20 lg:pt-38 lg:pb-28 overflow-hidden bg-dot-grid">
+    <section className="landing-hero relative pt-32 pb-20 lg:pt-38 lg:pb-28 overflow-hidden bg-dot-grid">
       
       {/* Background Radial Glow in Neon Lime */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[350px] bg-[#C4F82A]/10 blur-[150px] pointer-events-none rounded-full" />
-      <div className="absolute top-1/3 left-1/4 w-[350px] h-[350px] bg-emerald-500/10 blur-[140px] pointer-events-none rounded-full" />
+      <div className="hero-glow" aria-hidden="true" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
