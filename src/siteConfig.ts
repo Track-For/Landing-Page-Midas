@@ -1,1 +1,1 @@
-export const siteConfig = { videoUrl: "", whatsappNumber: "" };
+export const siteConfig = { whatsappNumber: "" };

@@ -1,6 +1,5 @@
-import { useEffect } from 'react';
-import { ArrowRight, Play } from 'lucide-react';
-import { siteConfig } from '../siteConfig';
+import { useEffect, useState } from 'react';
+import { ArrowRight, Check, RotateCcw, ArrowLeftRight } from 'lucide-react';
 export function Experience() {
  useEffect(() => {
  const circle = document.querySelector('#integracoes');
@@ -13,6 +12,42 @@ export function Experience() {
  }, []);
  return null;
 }
+const routes = [
+ { asset: 'BTC', buy: 100000, sell: 101200 },
+ { asset: 'ETH', buy: 3000, sell: 3045 },
+ { asset: 'SOL', buy: 150, sell: 152.70 },
+];
+const usd = (value: number) => new Intl.NumberFormat('en-US', {style: 'currency', currency: 'USD', maximumFractionDigits: 2}).format(value);
 export function Explainer({onStart}: {onStart: () => void}) {
- return <section className="explainer"><div className="section-label">UM ATIVO. DOIS PREÇOS.</div><h2>Você não precisa adivinhar<br/><span>a próxima direção.</span></h2><p>Entenda como a arbitragem identifica diferenças de preço entre corretoras.</p><div className="video-shell">{siteConfig.videoUrl ? <video controls preload="metadata" src={siteConfig.videoUrl}/> : <div className="video-preview"><span>PRÉVIA DA APRESENTAÇÃO</span><div className="price-orbit"><div>Corretora A<strong>$ 100,00</strong><small>COMPRA</small></div><ArrowRight size={40}/><div>Corretora B<strong>$ 102,00</strong><small>VENDA</small></div></div><p>A mesma moeda. Preços diferentes.</p><span><Play size={15}/> Vídeo explicativo em breve</span></div>}</div><button className="contact-pill" onClick={onStart}><span className="contact-pill-icon"><ArrowRight size={22}/></span><span>COMEÇAR AGORA</span></button></section>;
+ const [selected, setSelected] = useState(0);
+ const [complete, setComplete] = useState(false);
+ const route = routes[selected];
+ const capital = 1000;
+ const gross = capital * (route.sell / route.buy - 1);
+ const fees = capital * .001 + (capital + gross) * .001;
+ return <section className="explainer">
+   <div className="section-label">UM ATIVO. DOIS PREÇOS.</div>
+   <h2>Oportunidade na diferença.<br/><span>Veja como funciona.</span></h2>
+   <p>O preço de uma mesma moeda pode variar entre corretoras. Explore um exemplo de compra e venda para entender essa diferença.</p>
+   <div className="arbitrage-lab">
+     <div className="lab-toolbar"><span><span className="lab-dot"/> LAB MIDAS</span><span>SIMULAÇÃO ILUSTRATIVA</span></div>
+     <div className="lab-tabs" role="group" aria-label="Escolha a moeda do exemplo">
+       {routes.map((item, index) => <button key={item.asset} type="button" aria-pressed={index === selected} onClick={() => {setSelected(index); setComplete(false);}}>{item.asset}<span>/ USDT</span></button>)}
+     </div>
+     <div className="lab-route">
+       <div className="lab-exchange"><span className="lab-step">01 / COMPRA</span><div className="lab-exchange-name"><span>A</span>Corretora A</div><strong>{usd(route.buy)}</strong><p>Preço por {route.asset}</p></div>
+       <div className="lab-spread"><ArrowLeftRight size={28}/><strong>+{((route.sell / route.buy - 1) * 100).toFixed(2)}%</strong><span>diferença de preço</span></div>
+       <div className="lab-exchange"><span className="lab-step">02 / VENDA</span><div className="lab-exchange-name"><span>B</span>Corretora B</div><strong>{usd(route.sell)}</strong><p>Preço por {route.asset}</p></div>
+     </div>
+     <div className={`lab-result ${complete ? 'complete' : ''}`} aria-live="polite">
+       <div><span>Capital do exemplo</span><strong>{usd(capital)}</strong></div>
+       <div><span>Diferença bruta</span><strong>{usd(gross)}</strong></div>
+       <div><span>Taxas estimadas*</span><strong>−{usd(fees)}</strong></div>
+       <div><span>{complete ? 'Resultado da simulação' : 'Diferença após taxas*'}</span><strong>{complete && <Check size={18}/>}+{usd(gross - fees)}</strong></div>
+     </div>
+     <button type="button" className="lab-action" onClick={() => setComplete(!complete)}>{complete ? <RotateCcw size={18}/> : <ArrowRight size={18}/>} {complete ? 'Reiniciar exemplo' : 'Simular essa diferença'}</button>
+     <p className="lab-note">*Preços fictícios. Taxa ilustrativa de 0,1% por ordem. Não inclui transferência, funding, slippage ou mudanças de preço. Este exemplo não executa operações nem representa rentabilidade garantida.</p>
+   </div>
+   <button className="contact-pill" onClick={onStart}><span className="contact-pill-icon"><ArrowRight size={22}/></span><span>COMEÇAR AGORA</span></button>
+ </section>;
 }
