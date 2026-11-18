@@ -1,12 +1,7 @@
 import { siteConfig } from '../siteConfig';
-import React from 'react';
 import { ArrowRight, MessageCircle, ShieldCheck, Zap } from 'lucide-react';
 
-interface CtaSectionProps {
-  onOpenCheckout: (planId?: string) => void;
-}
-
-export const CtaSection: React.FC<CtaSectionProps> = ({ onOpenCheckout }) => {
+export const CtaSection = () => {
   return (
     <section className="py-24 bg-[#08090C] relative overflow-hidden bg-dot-grid">
       
@@ -34,13 +29,13 @@ export const CtaSection: React.FC<CtaSectionProps> = ({ onOpenCheckout }) => {
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-              <button
-                onClick={() => onOpenCheckout('pro')}
-                className="w-full sm:w-auto px-8 py-4 rounded-xl font-black text-base text-[#08090C] bg-[#C4F82A] hover:bg-[#D4FF4D] shadow-xl shadow-[#C4F82A]/25 hover:scale-[1.02] active:scale-[0.99] transition-all flex items-center justify-center gap-2 cursor-pointer font-mono"
+              <a
+                href={siteConfig.courseCheckoutUrl}
+                className="checkout-cta w-full sm:w-auto px-8 py-4 rounded-xl font-black text-base text-[#08090C] bg-[#C4F82A] hover:bg-[#D4FF4D] shadow-xl shadow-[#C4F82A]/25 hover:scale-[1.02] active:scale-[0.99] transition-all flex items-center justify-center gap-2 cursor-pointer font-mono"
               >
                 <span>Quero o treinamento por R$ 97</span>
                 <ArrowRight className="w-5 h-5" />
-              </button>
+              </a>
 
 
             </div>

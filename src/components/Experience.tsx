@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { ArrowRight, Check, RotateCcw, ArrowLeftRight } from 'lucide-react';
+import { siteConfig } from '../siteConfig';
 export function Experience() {
  useEffect(() => {
  const elements = document.querySelectorAll('main section h2, main section h3');
@@ -25,7 +26,7 @@ const routes = [
  { asset: 'SOL', buy: 150, sell: 152.70 },
 ];
 const usd = (value: number) => new Intl.NumberFormat('en-US', {style: 'currency', currency: 'USD', maximumFractionDigits: 2}).format(value);
-export function Explainer({onStart}: {onStart: () => void}) {
+export function Explainer() {
  const [selected, setSelected] = useState(0);
  const [complete, setComplete] = useState(false);
  const route = routes[selected];
@@ -55,6 +56,6 @@ export function Explainer({onStart}: {onStart: () => void}) {
      <button type="button" className="lab-action" onClick={() => setComplete(!complete)}>{complete ? <RotateCcw size={18}/> : <ArrowRight size={18}/>} {complete ? 'Reiniciar exemplo' : 'Simular essa diferença'}</button>
      <p className="lab-note">*Preços fictícios. Taxa ilustrativa de 0,1% por ordem. Não inclui transferência, funding, slippage ou mudanças de preço. Este exemplo não executa operações nem representa rentabilidade garantida.</p>
    </div>
-   <button className="contact-pill" onClick={onStart}><span className="contact-pill-icon"><ArrowRight size={22}/></span><span>QUERO APRENDER POR R$ 97</span></button>
+   <a href={siteConfig.courseCheckoutUrl} className="contact-pill"><span className="contact-pill-icon"><ArrowRight size={22}/></span><span>QUERO APRENDER POR R$ 97</span></a>
  </section>;
 }

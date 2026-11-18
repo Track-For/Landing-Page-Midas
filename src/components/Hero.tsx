@@ -1,11 +1,7 @@
-import React from 'react';
+import { siteConfig } from '../siteConfig';
 import { ArrowRight, ChevronRight } from 'lucide-react';
 
-interface HeroProps {
-  onOpenCheckout: (planId?: string) => void;
-}
-
-export const Hero: React.FC<HeroProps> = ({ onOpenCheckout }) => {
+export const Hero = () => {
 
   return (
     <section className="landing-hero relative pt-32 pb-20 lg:pt-38 lg:pb-28 overflow-hidden bg-dot-grid">
@@ -65,13 +61,13 @@ export const Hero: React.FC<HeroProps> = ({ onOpenCheckout }) => {
 
           {/* Primary CTA */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-3">
-            <button
-              onClick={() => onOpenCheckout('pro')}
+            <a
+              href={siteConfig.courseCheckoutUrl}
               className="contact-pill"
             >
               <span className="contact-pill-icon"><ArrowRight size={22}/></span><span>Quero aprender por R$ 97</span>
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </button>
+            </a>
 
             <a
               href="#treinamento"

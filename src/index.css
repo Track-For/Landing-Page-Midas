@@ -131,8 +131,8 @@ main section h2.revealed span::before { transform:scaleX(1) skewX(-2deg); }
 .price-orbit strong {display:block;font-size:clamp(22px,4vw,48px);color:white;margin:12px 0;}
 .price-orbit small {color:var(--accent);letter-spacing:.2em;}
 button:focus-visible,a:focus-visible {outline:2px solid var(--accent);outline-offset:5px;}
-#precos button,#robos button {box-shadow:0 0 16px #c4f82a22,inset 0 1px #ffffff66;}
-main section:last-child button {background:linear-gradient(115deg,#c4f82a,#89b10b,#edffab,#c4f82a);background-size:300% 100%;animation:energy 5s linear infinite;}
+#precos a,#robos button {box-shadow:0 0 16px #c4f82a22,inset 0 1px #ffffff66;}
+.checkout-cta {background:linear-gradient(115deg,#c4f82a,#89b10b,#edffab,#c4f82a);background-size:300% 100%;animation:energy 5s linear infinite;}
 @keyframes energy {to {background-position:300% 0;}}
 @media(max-width:640px){main section{padding-top:70px;padding-bottom:70px}.price-orbit{gap:12px}.price-orbit > div{padding:14px}.video-preview{padding:45px 12px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.reveal-title{opacity:1;transform:none}}
