@@ -69,7 +69,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenCheckout }) => {
               onClick={() => onOpenCheckout('pro')}
               className="contact-pill"
             >
-              <span className="contact-pill-icon"><ArrowRight size={22}/></span><span>Quero aprender por R$ 197</span>
+              <span className="contact-pill-icon"><ArrowRight size={22}/></span><span>Quero aprender por R$ 97</span>
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </button>
 
@@ -84,7 +84,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenCheckout }) => {
 
           {/* Microcopy */}
           <p className="text-xs text-slate-400 font-mono">
-            Treinamento por <strong className="text-[#C4F82A] font-black">R$ 197</strong> · Pagamento único
+            Treinamento por <strong className="text-[#C4F82A] font-black">R$ 97</strong> · Pagamento único
           </p>
 
         </div>

@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { Plus, Minus } from 'lucide-react';
 const questions = [
- ['O que estou comprando por R$ 197?', 'O Treinamento Midas de Arbitragem de Criptomoedas, com 5 módulos e 68 aulas em vídeo. O valor é do curso, em pagamento único.'],
+ ['O que estou comprando por R$ 97?', 'O Treinamento Midas de Arbitragem de Criptomoedas, com 5 módulos e 68 aulas em vídeo. O valor é do curso, em pagamento único.'],
  ['Preciso ter experiência com criptomoedas?', 'O conteúdo começa pelos fundamentos e avança para modalidades, custos e análise de operações. Você pode começar estudando os conceitos antes de colocar dinheiro em uma operação.'],
- ['A assinatura da plataforma está incluída?', 'A plataforma Midas é usada nas demonstrações do curso. Sua assinatura é vendida separadamente em uma etapa posterior e não está incluída nos R$ 197 do treinamento.'],
+ ['A assinatura da plataforma está incluída?', 'A plataforma Midas é usada nas demonstrações do curso. Sua assinatura é vendida separadamente em uma etapa posterior e não está incluída nos R$ 97 do treinamento.'],
  ['Vou aprender apenas a usar uma ferramenta?', 'Você vai estudar a lógica da arbitragem: diferenças de preço, modalidades, taxas, liquidez e riscos. A plataforma aparece como ferramenta para demonstrar esses conceitos na prática.'],
  ['O curso garante lucro?', 'Não. O treinamento é educacional. Taxas, variações de preço, liquidez e execução podem causar perdas. Os exemplos apresentados não representam promessa de resultado.'],
  ['Preciso investir para acompanhar as aulas?', 'Você pode começar pelo estudo e pelos exemplos. Para executar operações reais, será necessário capital próprio e avaliar os custos e os riscos envolvidos. O preço do curso não inclui capital para operar.'],

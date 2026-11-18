@@ -30,7 +30,7 @@ export const CtaSection: React.FC<CtaSectionProps> = ({ onOpenCheckout }) => {
             </h2>
 
             <p className="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto">
-              Dê o primeiro passo na arbitragem de criptomoedas com 5 módulos, 68 aulas em vídeo e exemplos práticos usando a Midas. Treinamento por R$ 197 em pagamento único.
+              Dê o primeiro passo na arbitragem de criptomoedas com 5 módulos, 68 aulas em vídeo e exemplos práticos usando a Midas. Treinamento por R$ 97 em pagamento único.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
@@ -38,7 +38,7 @@ export const CtaSection: React.FC<CtaSectionProps> = ({ onOpenCheckout }) => {
                 onClick={() => onOpenCheckout('pro')}
                 className="w-full sm:w-auto px-8 py-4 rounded-xl font-black text-base text-[#08090C] bg-[#C4F82A] hover:bg-[#D4FF4D] shadow-xl shadow-[#C4F82A]/25 hover:scale-[1.02] active:scale-[0.99] transition-all flex items-center justify-center gap-2 cursor-pointer font-mono"
               >
-                <span>Quero o treinamento por R$ 197</span>
+                <span>Quero o treinamento por R$ 97</span>
                 <ArrowRight className="w-5 h-5" />
               </button>
 
